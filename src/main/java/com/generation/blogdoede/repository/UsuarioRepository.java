@@ -9,8 +9,6 @@ import com.generation.blogdoede.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-	
-	public Optional<Usuario> findAllByNomeUsuarioContainingIgnoreCase (String nomeUsuario);
-	
-	public Optional<Usuario> findAllByLoginUsuarioContainingIgnoreCase (String loginUsuario);
+		
+	public Optional<Usuario> findByLoginUsuario (String loginUsuario);
 }
