@@ -34,10 +34,12 @@ public class Postagem {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPost = new java.sql.Date(System.currentTimeMillis());
 	
+	@NotNull
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
 	
+	@NotNull
 	@ManyToOne
 	@JsonIgnoreProperties("postagens")
 	private Usuario usuario;
