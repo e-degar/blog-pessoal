@@ -19,7 +19,7 @@ A modelagem do banco de dados foi feita como parte dos exercócios de MySQL do B
 
 Esse projeto segue o padrão MVC e está distribuído em pacotes conforme a imagem abaixo:
 
-![Camadas do projeto](/docs/screenshots/packages.png)
+![Camadas do projeto](/docs/screenshots/packages.PNG)
 
 - *Controller:* Contém as classes referentes aos endpoints das três entidades. Os endopoints em UsuarioController são pra cadastro e login de usuários. Os de TemaController e PostagemController só são acessíveis com autenticação.
 
