@@ -33,37 +33,42 @@ Esse projeto segue o padrão MVC e está distribuído em pacotes conforme a imag
 
 ## Rodando
 
-    1. Abrir o git e clonar este repositório pra sua máquina:
-
+1. Abrir o git e clonar este repositório pra sua máquina:
+    
     `git clone https://github.com/oieusouoede/generation-blogpessoal`
 
-    2. Importar o projeto no Eclipse ou IntelliJ (chegar compatibilidade no caso do IntelliJ)
+2. Importar o projeto no Eclipse ou IntelliJ (chegar compatibilidade no caso do IntelliJ)
    
-    Como o projeto é pra fins de estudo, o arquivo de configuração do banco de dados está com usuário e senha 'root'. Eventualmente eu vou trocar, mas tenha em mente que sua configuração pode ser diferente.
+3. Como o projeto é pra fins de estudo, o arquivo de configuração do banco de dados está com usuário e senha 'root'. Eventualmente eu vou trocar, mas tenha em mente que sua configuração pode ser diferente.
 
-    3. Rodar a aplicação a partir da classe principal.
+4. Rodar a aplicação a partir da classe principal.
 
 ## Endpoints
 
-    Se der tudo certo a api vai estar disponível na url https:localhost:8080 e os endpoints vão poder ser acessados pelo Postman, Rested ou ferramenta similar. 
+Se der tudo certo a api vai estar disponível na url https:localhost:8080 e os endpoints vão poder ser acessados pelo Postman, Rested ou ferramenta similar. 
 
-    Em:
-    `/user/cadastrar` e `/user/login` é possível enviar uma POST request pra, respectivamente, o cadastro e autenticação de usuário.
+Em `/user/cadastrar` e `/user/login` é possível enviar uma POST request pra, respectivamente, o cadastro e autenticação de usuário.
 
-    O restante dos endpoints só são acessíveis com autenticação. São eles:
+O restante dos endpoints só são acessíveis com autenticação. São eles:
 
-    - Postagens
+- Postagens
  
     `/posts` : Recebe requisições POST, pra inserção e PUT pra atualização de postagens.
+
     `/posts/all` : Recebe requisição GET e retorna todas as postagens.
+
     `/posts/{id}` : Recebe requisições GET e DELETE passando um id como parâmetro pra fazer busca por id ou deletar uma postagem com base no id.
+
     `/posts/titulo/{titulo}` : Recebe requisições GET passando uma string "titulo" como parâmetro, reliza busca de postagens com base no título.
 
-    - Temas
+- Temas
 
     `/tema` : Recebe requisições POST, pra inserção e PUT pra atualização de tema.
+
     `/tema/all` : Recebe requisição GET e retorna todos os temas.
+
     `/tema/{id}` : Recebe requisições GET e DELETE passando um id como parâmetro pra fazer busca por id ou deletar um tema com base no id.
+    
     `/tema/desc/{desc}` : Recebe requisições GET passando uma string "desc" como parâmetro, reliza busca de temas com base na descrição.
 
 Por enquanto é só
