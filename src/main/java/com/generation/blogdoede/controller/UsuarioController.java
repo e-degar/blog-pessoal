@@ -14,51 +14,58 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.generation.blogdoede.model.Postagem;
-import com.generation.blogdoede.repository.PostagemRepository;
+
+import com.generation.blogdoede.model.Usuario;
+import com.generation.blogdoede.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/posts")
 @CrossOrigin("*")
-public class PostagemController {
+@RequestMapping("/user")
+public class UsuarioController {
 	
 	@Autowired
-	private PostagemRepository repository;
+	private UsuarioRepository repository;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Postagem>> getAllPosts(){
+	public ResponseEntity<List<Usuario>> getAllUsers(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Postagem> getPostById(@PathVariable Long id){
+	public ResponseEntity<Usuario> getUserById(@PathVariable Long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> getPostByTitulo(@PathVariable String titulo){
+	@GetMapping("/name/{name}")
+	public ResponseEntity<List<Usuario>> getUsersByName(@PathVariable String name){
 		return ResponseEntity.ok(repository
-				.findAllByTituloPostContainingIgnoreCase(titulo));
+				.findAllByNomeUsuarioContainingIgnoreCase(name));
+	}
+	
+	@GetMapping("/username/{username}")
+	public ResponseEntity<List<Usuario>> getUsersByUsername(@PathVariable String username){
+		return ResponseEntity.ok(repository
+				.findAllByLoginUsuarioContainingIgnoreCase(username));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Postagem> createNewPost(@RequestBody Postagem postagem){
+	public ResponseEntity<Usuario> createNewUser(@RequestBody Usuario usuario){
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
-				.body(repository.save(postagem));
+				.body(repository.save(usuario));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Postagem> updatePost(@RequestBody Postagem postagem){
+	public ResponseEntity<Usuario> updateUser(@RequestBody Usuario usuario){
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body(repository.save(postagem));
+				.body(repository.save(usuario));
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deletePost(@PathVariable long id) {
+	public void deleteUser(@PathVariable long id) {
 		repository.deleteById(id);
 	}
 	
