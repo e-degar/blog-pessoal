@@ -16,22 +16,21 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.generation.blogdoede.dto.UserCredentialsDTO;
 import com.generation.blogdoede.dto.UserLoginDTO;
-import com.generation.blogdoede.model.Usuario;
-import com.generation.blogdoede.repository.UsuarioRepository;
+import com.generation.blogdoede.model.User;
+import com.generation.blogdoede.repository.UserRepository;
 
 @Service
-public class UsuarioService {
-	
+public class UserService {
 	
 	private UserCredentialsDTO credentialsDTO;
-	private @Autowired UsuarioRepository repo;
+	private @Autowired UserRepository repo;
 	
-	public ResponseEntity<Usuario> registrarUsuario (Usuario novoUsuario) {
-		Optional<Usuario> optional = repo.findByLoginUsuario(novoUsuario.getLoginUsuario());
+	public ResponseEntity<User> registrarUsuario (User newUser) {
+		Optional<User> optional = repo.findByUserEmail(newUser.getUserEmail());
 		
 		if (optional.isEmpty()) {
-			novoUsuario.setSenhaUsuario(encryptPasswd(novoUsuario.getSenhaUsuario()));
-			return ResponseEntity.status(201).body(repo.save(novoUsuario));
+			newUser.setUserPasswd(encryptPasswd(newUser.getUserPasswd()));
+			return ResponseEntity.status(201).body(repo.save(newUser));
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nome de usuário já existe!");
 		}
@@ -43,14 +42,14 @@ public class UsuarioService {
 	}
 	
 	public ResponseEntity<UserCredentialsDTO> getCredentials (@Valid UserLoginDTO dto){
-		return repo.findByLoginUsuario(dto.getUsername()).map(resp -> {
+		return repo.findByUserEmail(dto.getEmail()).map(resp -> {
 			BCryptPasswordEncoder encoder =  new BCryptPasswordEncoder();
 			
-			if (encoder.matches(dto.getPasswd(), resp.getSenhaUsuario())) {
+			if (encoder.matches(dto.getPasswd(), resp.getUserPasswd())) {
 				credentialsDTO = new UserCredentialsDTO(
-						basicTokenGenerator(dto.getUsername(), dto.getPasswd()),
-						resp.getIdUsuario(),
-						resp.getLoginUsuario());
+						basicTokenGenerator(dto.getEmail(), dto.getPasswd()),
+						resp.getUserId(),
+						resp.getUserEmail());
 				return ResponseEntity.status(200).body(credentialsDTO);
 			} else {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Senha inválida");
@@ -66,8 +65,8 @@ public class UsuarioService {
 		return "Basic " + new String(structureBase64);
 	}
 	
-	public ResponseEntity<List<Usuario>> getAllUsers(){
-		List<Usuario> list = repo.findAll();
+	public ResponseEntity<List<User>> getAllUsers(){
+		List<User> list = repo.findAll();
 		
 		if (list.isEmpty()) {
 			return ResponseEntity.status(204).build();
@@ -76,7 +75,7 @@ public class UsuarioService {
 		}
 	}
 	
-	public ResponseEntity<Usuario> findById(Long id){
+	public ResponseEntity<User> findById(Long id){
 		return repo.findById(id)
 				.map(resp -> ResponseEntity.status(200).body(resp))
 				.orElseGet(() -> {
@@ -84,8 +83,8 @@ public class UsuarioService {
 				});		
 	}
 
-	public ResponseEntity<Usuario> updateUser(@Valid Usuario user) {
-		return repo.findById(user.getIdUsuario())
+	public ResponseEntity<User> updateUser(@Valid User user) {
+		return repo.findById(user.getUserId())
 				.map(resp -> ResponseEntity.status(200).body(repo.save(user)))
 				.orElseGet(() -> {
 					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id não encontrado");
@@ -94,7 +93,7 @@ public class UsuarioService {
 
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity deleteUser(Long id) {
-		Optional<Usuario> optional = repo.findById(id);
+		Optional<User> optional = repo.findById(id);
 		
 		if (optional.isPresent()) {
 			repo.deleteById(id);

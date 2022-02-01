@@ -14,42 +14,42 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_tema")
-public class Tema {
+@Table(name = "tb_subject")
+public class Subject {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idTema;
+	private Long subjectId;
 	
 	@NotNull
-	private String descTema;
+	private String subjectDesc;
 	
-	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("tema")
-	private List<Postagem> postagem;
+	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("subject")
+	private List<Post> posts;
 
-	public Long getIdTema() {
-		return idTema;
+	public Long getSubjectId() {
+		return subjectId;
 	}
 
-	public void setIdTema(Long idTema) {
-		this.idTema = idTema;
+	public void setSubjectId(Long subjectId) {
+		this.subjectId = subjectId;
 	}
 
-	public String getDescTema() {
-		return descTema;
+	public String getSubjectDesc() {
+		return subjectDesc;
 	}
 
-	public void setDescTema(String descTema) {
-		this.descTema = descTema;
+	public void setSubjectDesc(String subjectDesc) {
+		this.subjectDesc = subjectDesc;
 	}
 
-	public List<Postagem> getPostagem() {
-		return postagem;
+	public List<Post> getPosts() {
+		return posts;
 	}
 
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 	
 }

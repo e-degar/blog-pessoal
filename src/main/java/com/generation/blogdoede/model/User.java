@@ -9,85 +9,98 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_usuario")
-public class Usuario {
+@Table(name = "tb_user")
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idUsuario;
+	private long userId;
 	
 	@NotNull
 	@Size(min = 2, max = 255)
-	private String nomeUsuario;
+	private String userName;
+	
+	@NotNull
+	@Email
+	private String userEmail;
 	
 	@NotNull
 	@Size(min = 3, max = 255)
-	private String loginUsuario;
+	private String userLogin;
 	
 	@NotNull
 	@Size(min = 8, max = 255)
-	private String senhaUsuario;
+	private String userPasswd;
 	
 	@NotNull
 	@Size(min = 8, max = 255)
-	private String fotoUsuario;
+	private String userPicture;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("usuario")
-	private List<Postagem> postagens;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("user")
+	private List<Post> posts;
 
-	public long getIdUsuario() {
-		return idUsuario;
+	public long getUserId() {
+		return userId;
 	}
 
-	public void setIdUsuario(long idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	public String getUserEmail() {
+		return userEmail;
 	}
 
-	public String getLoginUsuario() {
-		return loginUsuario;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
-	public void setLoginUsuario(String loginUsuario) {
-		this.loginUsuario = loginUsuario;
+	public String getUserLogin() {
+		return userLogin;
 	}
 
-	public String getSenhaUsuario() {
-		return senhaUsuario;
+	public void setUserLogin(String userLogin) {
+		this.userLogin = userLogin;
 	}
 
-	public void setSenhaUsuario(String senhaUsuario) {
-		this.senhaUsuario = senhaUsuario;
+	public String getUserPasswd() {
+		return userPasswd;
 	}
 
-	public String getFotoUsuario() {
-		return fotoUsuario;
+	public void setUserPasswd(String userPasswd) {
+		this.userPasswd = userPasswd;
 	}
 
-	public void setFotoUsuario(String fotoUsuario) {
-		this.fotoUsuario = fotoUsuario;
+	public String getUserPicture() {
+		return userPicture;
 	}
 
-	public List<Postagem> getPostagens() {
-		return postagens;
+	public void setUserPicture(String userPicture) {
+		this.userPicture = userPicture;
 	}
 
-	public void setPostagens(List<Postagem> postagens) {
-		this.postagens = postagens;
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 		
 }

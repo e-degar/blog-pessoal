@@ -5,10 +5,12 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.generation.blogdoede.model.Usuario;
+import com.generation.blogdoede.model.User;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 		
-	public Optional<Usuario> findByLoginUsuario (String loginUsuario);
+	public Optional<User> findByUserLoginContainingIgnoreCase (String userLogin);
+	
+	public Optional<User> findByUserEmail (String userEmail);
 }

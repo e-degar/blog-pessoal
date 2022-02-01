@@ -15,24 +15,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogdoede.model.Tema;
-import com.generation.blogdoede.repository.TemaRepository;
+import com.generation.blogdoede.model.Subject;
+import com.generation.blogdoede.repository.SubjectRepository;
 
 @RestController
 @RequestMapping("/tema")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class TemaController {
+public class SubjectController {
 
 	@Autowired
-	private TemaRepository repository;
+	private SubjectRepository repository;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Tema>> getAllTemas(){
+	public ResponseEntity<List<Subject>> getAllTemas(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Tema> getTemaById(@PathVariable Long id){
+	public ResponseEntity<Subject> getTemaById(@PathVariable Long id){
 		return repository
 				.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
@@ -40,20 +40,20 @@ public class TemaController {
 	}
 	
 	@GetMapping("/desc/{desc}")
-	public ResponseEntity<List<Tema>> getTemaByName(@PathVariable String desc){
+	public ResponseEntity<List<Subject>> getTemaByName(@PathVariable String desc){
 		return ResponseEntity.ok(repository
-				.findAllByDescTemaContainingIgnoreCase(desc)); 
+				.findAllBySubjectDescContainingIgnoreCase(desc)); 
 	}
 	
 	@PostMapping
-	public ResponseEntity<Tema> createNewTema(@RequestBody Tema tema){
+	public ResponseEntity<Subject> createNewTema(@RequestBody Subject tema){
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 				.body(repository.save(tema));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Tema> updateTema(@RequestBody Tema tema){
+	public ResponseEntity<Subject> updateTema(@RequestBody Subject tema){
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(repository.save(tema));

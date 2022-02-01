@@ -14,44 +14,44 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.generation.blogdoede.model.Postagem;
-import com.generation.blogdoede.repository.PostagemRepository;
+import com.generation.blogdoede.model.Post;
+import com.generation.blogdoede.repository.PostRepository;
 
 @RestController
 @RequestMapping("/posts")
 @CrossOrigin("*")
-public class PostagemController {
+public class PostController {
 	
 	@Autowired
-	private PostagemRepository repository;
+	private PostRepository repository;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Postagem>> getAllPosts(){
+	public ResponseEntity<List<Post>> getAllPosts(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Postagem> getPostById(@PathVariable Long id){
+	public ResponseEntity<Post> getPostById(@PathVariable Long id){
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> getPostByTitulo(@PathVariable String titulo){
+	public ResponseEntity<List<Post>> getPostByTitulo(@PathVariable String titulo){
 		return ResponseEntity
-				.ok(repository.findAllByTituloPostContainingIgnoreCase(titulo));
+				.ok(repository.findAllByPostTitleContainingIgnoreCase(titulo));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Postagem> createNewPost(@RequestBody Postagem postagem){
+	public ResponseEntity<Post> createNewPost(@RequestBody Post postagem){
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 				.body(repository.save(postagem));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Postagem> updatePost(@RequestBody Postagem postagem){
+	public ResponseEntity<Post> updatePost(@RequestBody Post postagem){
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(repository.save(postagem));

@@ -4,13 +4,12 @@ public class UserCredentialsDTO {
 	
 	private String basicToken;
 	private Long id;
-	private String username;
+	private String email;
 	
-	public UserCredentialsDTO(String basicToken, Long id, String username) {
-		super();
+	public UserCredentialsDTO(String basicToken, Long id, String email) {
 		this.basicToken = basicToken;
 		this.id = id;
-		this.username = username;
+		this.email = email;
 	}
 
 	public String getBasicToken() {
@@ -29,12 +28,12 @@ public class UserCredentialsDTO {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+		
 }

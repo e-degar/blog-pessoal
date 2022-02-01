@@ -18,19 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.blogdoede.dto.UserCredentialsDTO;
 import com.generation.blogdoede.dto.UserLoginDTO;
-import com.generation.blogdoede.model.Usuario;
-import com.generation.blogdoede.service.UsuarioService;
+import com.generation.blogdoede.model.User;
+import com.generation.blogdoede.service.UserService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/user")
-public class UsuarioController {
+@RequestMapping("/api/user")
+public class UserController {
 	
-	private @Autowired UsuarioService service;
+	private @Autowired UserService service;
 	
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> registerUser (@Valid @RequestBody Usuario novoUsuario){
-		return service.registrarUsuario(novoUsuario);
+	@PostMapping("/register")
+	public ResponseEntity<User> registerUser (@Valid @RequestBody User newUser){
+		return service.registrarUsuario(newUser);
 	}
 	
 	@PostMapping("/login")
@@ -39,18 +39,18 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Usuario>> getAll(){
+	public ResponseEntity<List<User>> getAll(){
 		return service.getAllUsers();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> getById(@PathVariable Long id){
+	public ResponseEntity<User> getById(@PathVariable Long id){
 		return service.findById(id);
 		
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Usuario> updateUser(@Valid @RequestBody Usuario user){
+	public ResponseEntity<User> updateUser(@Valid @RequestBody User user){
 		return service.updateUser(user);
 	}
 	

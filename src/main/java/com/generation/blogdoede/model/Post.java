@@ -16,80 +16,80 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_postagem")
-public class Postagem {
+@Table(name = "tb_posts")
+public class Post {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idPost;
+	private Long postId;
 	
 	@NotNull
 	@Size(min = 5, max = 150)
-	private String tituloPost;
+	private String postTitle;
 	
 	@NotNull
 	@Size(min = 10, max = 1000)
-	private String textoPost;
+	private String postContent;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataPost = new java.sql.Date(System.currentTimeMillis());
+	private Date postDate = new java.sql.Date(System.currentTimeMillis());
 	
 	@NotNull
 	@ManyToOne
-	@JsonIgnoreProperties("postagem")
-	private Tema tema;
+	@JsonIgnoreProperties("posts")
+	private Subject subject;
 	
 	@NotNull
 	@ManyToOne
-	@JsonIgnoreProperties("postagens")
-	private Usuario usuario;
-	
-	public Long getIdPost() {
-		return idPost;
+	@JsonIgnoreProperties("posts")
+	private User user;
+
+	public Long getPostId() {
+		return postId;
 	}
 
-	public void setIdPost(Long idPost) {
-		this.idPost = idPost;
+	public void setPostId(Long postId) {
+		this.postId = postId;
 	}
 
-	public String getTituloPost() {
-		return tituloPost;
+	public String getPostTitle() {
+		return postTitle;
 	}
 
-	public void setTituloPost(String tituloPost) {
-		this.tituloPost = tituloPost;
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
 	}
 
-	public String getTextoPost() {
-		return textoPost;
+	public String getPostContent() {
+		return postContent;
 	}
 
-	public void setTextoPost(String textoPost) {
-		this.textoPost = textoPost;
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
 	}
 
-	public Date getDataPost() {
-		return dataPost;
+	public Date getPostDate() {
+		return postDate;
 	}
 
-	public void setDataPost(Date dataPost) {
-		this.dataPost = dataPost;
+	public void setPostDate(Date postDate) {
+		this.postDate = postDate;
 	}
 
-	public Tema getTema() {
-		return tema;
+	public Subject getSubject() {
+		return subject;
 	}
 
-	public void setTema(Tema tema) {
-		this.tema = tema;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUser(User user) {
+		this.user = user;
 	}
-		
+			
 }
