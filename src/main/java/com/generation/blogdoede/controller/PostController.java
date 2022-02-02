@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.generation.blogdoede.model.Post;
-import com.generation.blogdoede.repository.PostRepository;
+
+import com.generation.blogdoede.domain.model.Post;
+import com.generation.blogdoede.domain.repository.PostRepository;
+import com.generation.blogdoede.dto.PostDTO;
+import com.generation.blogdoede.service.PostService;
 
 @RestController
 @RequestMapping("/posts")
@@ -24,10 +27,11 @@ public class PostController {
 	
 	@Autowired
 	private PostRepository repository;
+	private @Autowired PostService service;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Post>> getAllPosts(){
-		return ResponseEntity.ok(repository.findAll());
+	public ResponseEntity<List<PostDTO>> getAllPosts(){
+		return service.getAllPosts();
 	}
 	
 	@GetMapping("/{id}")

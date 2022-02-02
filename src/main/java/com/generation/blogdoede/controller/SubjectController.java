@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogdoede.model.Subject;
-import com.generation.blogdoede.repository.SubjectRepository;
+import com.generation.blogdoede.domain.model.Subject;
+import com.generation.blogdoede.domain.repository.SubjectRepository;
 
 @RestController
 @RequestMapping("/tema")

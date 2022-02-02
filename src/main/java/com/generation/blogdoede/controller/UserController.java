@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.generation.blogdoede.domain.model.User;
 import com.generation.blogdoede.dto.UserCredentialsDTO;
 import com.generation.blogdoede.dto.UserLoginDTO;
-import com.generation.blogdoede.model.User;
 import com.generation.blogdoede.service.UserService;
 
 @RestController
