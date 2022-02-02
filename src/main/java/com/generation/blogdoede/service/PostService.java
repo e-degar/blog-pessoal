@@ -34,23 +34,33 @@ public class PostService {
 		} else {
 			return ResponseEntity.status(200)
 					.body(posts.stream()
-					.map(mapper::toDTO)
+					.map(mapper::postToDTO)
 					.collect(Collectors.toList())); 
 		}
 	}
 	
 	public ResponseEntity<PostDTO> getPostById(Long id) {
 		return repo.findById(id)
-				.map(resp -> ResponseEntity.ok(mapper.toDTO(resp)))
-				.orElse(ResponseEntity.notFound().build());
+				.map(resp -> ResponseEntity.ok(mapper.postToDTO(resp)))
+				.orElse(ResponseEntity.status(404).build());
 	}
 
-	public ResponseEntity<PostDTO> createNewPost(Post postagem) {
+	public ResponseEntity<PostDTO> createNewPost(PostDTO postagem) {
+		Post created = repo.save(mapper.toModel(postagem));
 		return ResponseEntity
 				.status(201)
-				.body(mapper.toDTO(repo.save(postagem)));
+				.body(mapper.postToDTO(created));
 	}
-	
-	
-	
+
+	public ResponseEntity<PostDTO> updatePost(PostDTO postagem) {
+		Post updated = repo.save(mapper.toModel(postagem));
+		return ResponseEntity
+				.status(200)
+				.body(mapper.postToDTO(updated));
+	}
+
+	public void deletePost(long id) {
+		repo.deleteById(id);	
+	}
+
 }
