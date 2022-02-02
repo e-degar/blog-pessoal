@@ -2,8 +2,7 @@ package com.generation.blogdoede.dto;
 
 import java.util.Date;
 
-import com.generation.blogdoede.domain.model.Subject;
-import com.generation.blogdoede.domain.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class PostDTO {
 
@@ -11,10 +10,11 @@ public class PostDTO {
 	private String postTitle;
 	private String postContent;
 	private Date postDate;
-	private Subject subject;
-	private User user;
+	@JsonIgnoreProperties("posts")
+	private SubjectDTO subject;
+	private UserDTO user;
 	
-	public PostDTO(Long postId, String postTitle, String postContent, Date postDate, Subject subject, User user) {
+	public PostDTO(Long postId, String postTitle, String postContent, Date postDate, SubjectDTO subject, UserDTO user) {
 		this.postId = postId;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
@@ -55,19 +55,19 @@ public class PostDTO {
 		this.postDate = postDate;
 	}
 	
-	public Subject getSubject() {
+	public SubjectDTO getSubject() {
 		return subject;
 	}
 	
-	public void setSubject(Subject subject) {
+	public void setSubject(SubjectDTO subject) {
 		this.subject = subject;
 	}
 	
-	public User getUser() {
+	public UserDTO getUser() {
 		return user;
 	}
 	
-	public void setUser(User user) {
+	public void setUser(UserDTO user) {
 		this.user = user;
 	}
 	

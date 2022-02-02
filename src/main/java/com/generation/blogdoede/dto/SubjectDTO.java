@@ -2,13 +2,14 @@ package com.generation.blogdoede.dto;
 
 import java.util.List;
 
-import com.generation.blogdoede.domain.model.Post;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class SubjectDTO {
 	
 	private Long subjectId;	
 	private String subjectDesc;
-	private List<Post> posts;
+	@JsonIgnoreProperties("subject")
+	private List<PostDTO> posts;
 
 	public Long getSubjectId() {
 		return subjectId;
@@ -26,11 +27,11 @@ public class SubjectDTO {
 		this.subjectDesc = subjectDesc;
 	}
 
-	public List<Post> getPosts() {
+	public List<PostDTO> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(List<Post> posts) {
+	public void setPosts(List<PostDTO> posts) {
 		this.posts = posts;
 	}
 	
