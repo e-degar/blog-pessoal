@@ -14,10 +14,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.generation.blogdoede.domain.model.User;
+import com.generation.blogdoede.domain.repository.UserRepository;
 import com.generation.blogdoede.dto.UserCredentialsDTO;
 import com.generation.blogdoede.dto.UserLoginDTO;
-import com.generation.blogdoede.model.User;
-import com.generation.blogdoede.repository.UserRepository;
 
 @Service
 public class UserService {
