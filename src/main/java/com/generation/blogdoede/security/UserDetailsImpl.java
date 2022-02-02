@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.generation.blogdoede.model.User;
+import com.generation.blogdoede.domain.model.User;
 
 public class UserDetailsImpl implements UserDetails{
 
