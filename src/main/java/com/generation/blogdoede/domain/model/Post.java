@@ -1,4 +1,4 @@
-package com.generation.blogdoede.model;
+package com.generation.blogdoede.domain.model;
 
 import java.util.Date;
 
