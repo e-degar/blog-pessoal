@@ -3,7 +3,6 @@ package com.generation.blogdoede.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,53 +14,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogdoede.domain.model.Subject;
-import com.generation.blogdoede.domain.repository.SubjectRepository;
+import com.generation.blogdoede.dto.SubjectDTO;
+import com.generation.blogdoede.service.SubjectService;
 
 @RestController
 @RequestMapping("/tema")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SubjectController {
 
-	@Autowired
-	private SubjectRepository repository;
+	private @Autowired SubjectService service;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Subject>> getAllTemas(){
-		return ResponseEntity.ok(repository.findAll());
-	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Subject> getTemaById(@PathVariable Long id){
-		return repository
-				.findById(id)
-				.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<List<SubjectDTO>> getAllSubjects(){
+		return service.getAllSubjects();
 	}
 	
 	@GetMapping("/desc/{desc}")
-	public ResponseEntity<List<Subject>> getTemaByName(@PathVariable String desc){
-		return ResponseEntity.ok(repository
-				.findAllBySubjectDescContainingIgnoreCase(desc)); 
+	public ResponseEntity<List<SubjectDTO>> getSubjectByName(@PathVariable String desc){
+		return service.getSubjectByName(desc); 
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<SubjectDTO> getSubjectById(@PathVariable Long id){
+		return service.getSubjectById(id);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Subject> createNewTema(@RequestBody Subject tema){
-		return ResponseEntity
-				.status(HttpStatus.CREATED)
-				.body(repository.save(tema));
+	public ResponseEntity<SubjectDTO> createNewSubject(@RequestBody SubjectDTO subject){
+		return service.createNewSubject(subject);
 	}
 	
 	@PutMapping
-	public ResponseEntity<Subject> updateTema(@RequestBody Subject tema){
-		return ResponseEntity
-				.status(HttpStatus.OK)
-				.body(repository.save(tema));
+	public ResponseEntity<SubjectDTO> updateSubject(@RequestBody SubjectDTO subject){
+		return service.updateSubject(subject);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteTema(@PathVariable long id) {
-		repository.deleteById(id);
+	public void deleteSubject(@PathVariable long id) {
+		service.deleteSubject(id);
 	}
 	
 }
