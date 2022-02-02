@@ -19,8 +19,16 @@ public class PostService {
 	private @Autowired PostRepository repo;
 
 	public ResponseEntity<List<PostDTO>> getAllPosts(){
-		List<Post> posts = repo.findAll();
-		
+		List<Post> allPosts = repo.findAll();	
+		return foundPosts(allPosts);
+	}
+
+	public ResponseEntity<List<PostDTO>> getPostByTitulo(String titulo) {
+		List<Post> postsByTitle = repo.findAllByPostTitleContainingIgnoreCase(titulo);		
+		return foundPosts(postsByTitle);
+	}
+	
+	private ResponseEntity<List<PostDTO>> foundPosts(List<Post> posts){
 		if (posts.isEmpty()) {
 			return ResponseEntity.status(204).build();
 		} else {
@@ -30,5 +38,19 @@ public class PostService {
 					.collect(Collectors.toList())); 
 		}
 	}
+	
+	public ResponseEntity<PostDTO> getPostById(Long id) {
+		return repo.findById(id)
+				.map(resp -> ResponseEntity.ok(mapper.toDTO(resp)))
+				.orElse(ResponseEntity.notFound().build());
+	}
+
+	public ResponseEntity<PostDTO> createNewPost(Post postagem) {
+		return ResponseEntity
+				.status(201)
+				.body(mapper.toDTO(repo.save(postagem)));
+	}
+	
+	
 	
 }

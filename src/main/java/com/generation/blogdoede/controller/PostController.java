@@ -34,24 +34,19 @@ public class PostController {
 		return service.getAllPosts();
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Post> getPostById(@PathVariable Long id){
-		return repository.findById(id)
-				.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity<List<PostDTO>> getPostByTitulo(@PathVariable String titulo){
+		return service.getPostByTitulo(titulo);
 	}
 	
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Post>> getPostByTitulo(@PathVariable String titulo){
-		return ResponseEntity
-				.ok(repository.findAllByPostTitleContainingIgnoreCase(titulo));
+	@GetMapping("/{id}")
+	public ResponseEntity<PostDTO> getPostById(@PathVariable Long id){
+		return service.getPostById(id);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Post> createNewPost(@RequestBody Post postagem){
-		return ResponseEntity
-				.status(HttpStatus.CREATED)
-				.body(repository.save(postagem));
+	public ResponseEntity<PostDTO> createNewPost(@RequestBody Post postagem){
+		return service.createNewPost(postagem);
 	}
 	
 	@PutMapping
