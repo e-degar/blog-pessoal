@@ -3,11 +3,11 @@ package com.generation.blogdoede.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.generation.blogdoede.commons.mappers.SubjectMapper;
 import com.generation.blogdoede.domain.model.Subject;
 import com.generation.blogdoede.domain.repository.SubjectRepository;
 import com.generation.blogdoede.dto.SubjectDTO;
@@ -15,7 +15,7 @@ import com.generation.blogdoede.dto.SubjectDTO;
 @Service
 public class SubjectService {
 	
-	private @Autowired SubjectMapper mapper;
+	private @Autowired ModelMapper mapper;
 	private @Autowired SubjectRepository repo;
 	
 	public ResponseEntity<List<SubjectDTO>> getAllSubjects() {
@@ -34,37 +34,33 @@ public class SubjectService {
 		} else {
 			return ResponseEntity.status(200)
 					.body(subjects.stream()
-					.map(mapper::subjectToDTO)
+					.map(subject -> mapper.map(subject, SubjectDTO.class))
 					.collect(Collectors.toList())); 
 		}
 	}
 
 	public ResponseEntity<SubjectDTO> getSubjectById(Long id) {
 		return repo.findById(id)
-		.map(resp -> ResponseEntity.ok(mapper.subjectToDTO(resp)))
+		.map(resp -> ResponseEntity.ok(mapper.map(resp, SubjectDTO.class)))
 		.orElse(ResponseEntity.status(404).build());
 	}
 
 	public ResponseEntity<SubjectDTO> createNewSubject(SubjectDTO subject) {
-		Subject created = repo.save(mapper.toModel(subject));
+		Subject created = repo.save(mapper.map(subject, Subject.class));
 		return ResponseEntity
 			.status(200)
-			.body(mapper.subjectToDTO(created));
+			.body(mapper.map(created, SubjectDTO.class));
 	}
 
 	public ResponseEntity<SubjectDTO> updateSubject(SubjectDTO subject) {
-		Subject updated = repo.save(mapper.toModel(subject));
+		Subject updated = repo.save(mapper.map(subject, Subject.class));
 		return ResponseEntity
 				.status(200)
-				.body(mapper.subjectToDTO(updated));
+				.body(mapper.map(updated, SubjectDTO.class));
 	}
 
 	public void deleteSubject(long id) {
 		repo.deleteById(id);	
 	}
-	
-	
-
-	
 	
 }

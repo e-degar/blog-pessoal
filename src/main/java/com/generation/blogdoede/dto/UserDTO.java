@@ -1,5 +1,9 @@
 package com.generation.blogdoede.dto;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 public class UserDTO {
 	
 private long userId;
@@ -12,14 +16,20 @@ private long userId;
 		
 	private String userPicture;
 	
-	public UserDTO(long userId, String userName, String userEmail, String userLogin,
-			String userPicture) {
+	@JsonIgnoreProperties("user")
+	private List<PostDTO> posts;
+
+	public UserDTO(long userId, String userName, String userEmail, String userLogin, String userPicture,
+			List<PostDTO> posts) {
 		this.userId = userId;
 		this.userName = userName;
 		this.userEmail = userEmail;
 		this.userLogin = userLogin;
 		this.userPicture = userPicture;
+		this.posts = posts;
 	}
+	
+	public UserDTO() {}
 
 	public long getUserId() {
 		return userId;
@@ -59,6 +69,14 @@ private long userId;
 
 	public void setUserPicture(String userPicture) {
 		this.userPicture = userPicture;
+	}
+
+	public List<PostDTO> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<PostDTO> posts) {
+		this.posts = posts;
 	}
 
 }

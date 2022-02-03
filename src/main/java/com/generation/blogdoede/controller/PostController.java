@@ -29,9 +29,9 @@ public class PostController {
 		return service.getAllPosts();
 	}
 	
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<PostDTO>> getPostByTitulo(@PathVariable String titulo){
-		return service.getPostByTitulo(titulo);
+	@GetMapping("/title/{title}")
+	public ResponseEntity<List<PostDTO>> getPostByTitle(@PathVariable String title){
+		return service.getPostByTitulo(title);
 	}
 	
 	@GetMapping("/{id}")
@@ -40,13 +40,13 @@ public class PostController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<PostDTO> createNewPost(@RequestBody PostDTO postagem){
-		return service.createNewPost(postagem);
+	public ResponseEntity<PostDTO> createNewPost(@RequestBody PostDTO post){
+		return service.createNewPost(post);
 	}
 	
 	@PutMapping
-	public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO postagem){
-		return service.updatePost(postagem);
+	public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO post){
+		return service.updatePost(post);
 	}
 	
 	@DeleteMapping("/{id}")

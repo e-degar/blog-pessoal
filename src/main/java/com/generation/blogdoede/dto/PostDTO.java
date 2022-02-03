@@ -9,19 +9,21 @@ public class PostDTO {
 	private Long postId;
 	private String postTitle;
 	private String postContent;
-	private Date postDate;
+	private Date postDate = new java.sql.Timestamp(System.currentTimeMillis());
 	@JsonIgnoreProperties("posts")
 	private SubjectDTO subject;
+	@JsonIgnoreProperties("posts")
 	private UserDTO user;
 	
-	public PostDTO(Long postId, String postTitle, String postContent, Date postDate, SubjectDTO subject, UserDTO user) {
+	public PostDTO(Long postId, String postTitle, String postContent, SubjectDTO subject, UserDTO user) {
 		this.postId = postId;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
-		this.postDate = postDate;
 		this.subject = subject;
 		this.user = user;
 	}
+	
+	public PostDTO() {}
 
 	public Long getPostId() {
 		return postId;

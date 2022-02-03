@@ -18,7 +18,7 @@ import com.generation.blogdoede.dto.SubjectDTO;
 import com.generation.blogdoede.service.SubjectService;
 
 @RestController
-@RequestMapping("/tema")
+@RequestMapping("/subject")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SubjectController {
 

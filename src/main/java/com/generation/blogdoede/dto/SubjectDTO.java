@@ -10,6 +10,14 @@ public class SubjectDTO {
 	private String subjectDesc;
 	@JsonIgnoreProperties("subject")
 	private List<PostDTO> posts;
+	
+	public SubjectDTO(Long subjectId, String subjectDesc, List<PostDTO> posts) {
+		this.subjectId = subjectId;
+		this.subjectDesc = subjectDesc;
+		this.posts = posts;
+	}
+	
+	public SubjectDTO() {}
 
 	public Long getSubjectId() {
 		return subjectId;
