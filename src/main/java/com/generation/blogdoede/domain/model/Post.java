@@ -32,7 +32,7 @@ public class Post {
 	private String postContent;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date postDate = new java.sql.Date(System.currentTimeMillis());
+	private Date postDate;
 	
 	@NotNull
 	@ManyToOne
