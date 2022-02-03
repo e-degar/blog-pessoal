@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.generation</groupId>
 	<artifactId>blogdoede</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>blogdoede</name>
 	<description>Projeto de blog pessoal da Generation</description>
