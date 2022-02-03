@@ -1,5 +1,18 @@
 package com.generation.blogdoede.dto;
 
+/**
+ *  Classe responsável pelo DTO de credenciais do Usuário
+ * 
+ *  @author Edgar Soares Marinho
+ * 	@date 03/02/2022
+ * 	@version 0.1.1-SNAPSHOT
+ * 	@see User
+ * 	@see UserDTO
+ * 	@see UserLoginDTO
+ * 	@see UserService
+ * 
+ */
+
 public class UserCredentialsDTO {
 	
 	private String basicToken;

@@ -13,6 +13,17 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Model da tabela tb_subject
+ * 
+ * @author Edgar Soares Marinho
+ * @since 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * @see SubjectDTO
+ * @see SubjectService
+ * 
+ */
+
 @Entity
 @Table(name = "tb_subject")
 public class Subject {

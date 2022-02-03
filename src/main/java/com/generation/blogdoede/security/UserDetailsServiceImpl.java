@@ -11,6 +11,19 @@ import org.springframework.stereotype.Service;
 import com.generation.blogdoede.domain.model.User;
 import com.generation.blogdoede.domain.repository.UserRepository;
 
+/**
+ * Implementação do UserDetailsService do spring security
+ * 
+ * @author Edgar Soares Marinho
+ * @date 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * @see UserDetailsService
+ * @see UserRepository
+ * @see UserModel
+ * @see UserDetailsImplement
+ * 
+ */
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	

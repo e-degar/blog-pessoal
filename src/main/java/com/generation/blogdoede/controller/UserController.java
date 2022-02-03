@@ -21,6 +21,15 @@ import com.generation.blogdoede.dto.UserCredentialsDTO;
 import com.generation.blogdoede.dto.UserLoginDTO;
 import com.generation.blogdoede.service.UserService;
 
+/**
+ * Implementação dos endpoints relacionados com a model User
+ * 
+ * @author Edgar Soares Marinho
+ * @date 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * 
+ */
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/user")

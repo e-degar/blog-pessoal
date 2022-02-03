@@ -17,6 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.generation.blogdoede.dto.SubjectDTO;
 import com.generation.blogdoede.service.SubjectService;
 
+/**
+ * Implementação dos endpoints relacionados com a model Subject
+ * 
+ * @author Edgar Soares Marinho
+ * @date 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * 
+ */
+
 @RestController
 @RequestMapping("/subject")
 @CrossOrigin(origins = "*", allowedHeaders = "*")

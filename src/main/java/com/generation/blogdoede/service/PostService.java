@@ -12,9 +12,17 @@ import com.generation.blogdoede.domain.model.Post;
 import com.generation.blogdoede.domain.repository.PostRepository;
 import com.generation.blogdoede.dto.PostDTO;
 
+/**
+ * Implementação do PostService com os métodos relacionados com a model Post
+ * 
+ * @author Edgar Soares Marinho
+ * @date 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * 
+ */
+
 @Service
 public class PostService {
-
 
 	private @Autowired PostRepository repo;
 	private @Autowired ModelMapper mapper;

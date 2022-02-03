@@ -17,6 +17,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+/**
+ * Model da tabela tb_user
+ * 
+ * @author Edgar Soares Marinho
+ * @since 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * @see UserDTO
+ * @see UserCredentialsDTO
+ * @see UserLoginDTO
+ * @see UserService
+ * 
+ */
+
 @Entity
 @Table(name = "tb_user")
 public class User {

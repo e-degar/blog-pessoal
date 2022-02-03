@@ -19,6 +19,15 @@ import com.generation.blogdoede.domain.repository.UserRepository;
 import com.generation.blogdoede.dto.UserCredentialsDTO;
 import com.generation.blogdoede.dto.UserLoginDTO;
 
+/**
+ * Implementação do UserService com os métodos relacionados com a model User
+ * 
+ * @author Edgar Soares Marinho
+ * @date 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * 
+ */
+
 @Service
 public class UserService {
 	

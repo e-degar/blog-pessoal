@@ -4,6 +4,18 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ *  Classe responsável pelo DTO da model Usuário
+ * 
+ *  @author Edgar Soares Marinho
+ * 	@date 03/02/2022
+ * 	@version 0.1.1-SNAPSHOT
+ * 	@see User
+ * 	@see UserLoginDTO
+ * 	@see UserCredentialsDTO
+ * 
+ */
+
 public class UserDTO {
 	
 private long userId;

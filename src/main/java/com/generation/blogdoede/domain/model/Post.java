@@ -15,6 +15,17 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Model da tabela tb_posts
+ * 
+ * @author Edgar Soares Marinho
+ * @since 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * @see PostDTO
+ * @see PostService
+ * 
+ */
+
 @Entity
 @Table(name = "tb_posts")
 public class Post {

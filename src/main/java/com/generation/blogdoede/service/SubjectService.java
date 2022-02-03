@@ -12,6 +12,15 @@ import com.generation.blogdoede.domain.model.Subject;
 import com.generation.blogdoede.domain.repository.SubjectRepository;
 import com.generation.blogdoede.dto.SubjectDTO;
 
+/**
+ * Implementação do SubjectService com os métodos relacionados com a model Subject
+ * 
+ * @author Edgar Soares Marinho
+ * @date 03/02/2022
+ * @version 0.1.1-SNAPSHOT
+ * 
+ */
+
 @Service
 public class SubjectService {
 	
