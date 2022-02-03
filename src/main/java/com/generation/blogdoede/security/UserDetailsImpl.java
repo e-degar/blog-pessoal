@@ -1,59 +1,60 @@
 package com.generation.blogdoede.security;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.generation.blogdoede.model.Usuario;
+import com.generation.blogdoede.domain.model.User;
 
-public class UserDetailsImpl implements UserDetails {
+public class UserDetailsImpl implements UserDetails{
 
 	private static final long serialVersionUID = 1L;
+	private String email;
+	private String passwd;
+	private List<GrantedAuthority> authorities;
 	
-	private String userName;
-	private String passWord;
-
-	public UserDetailsImpl(Usuario user) {
-		this.userName = user.getLoginUsuario();
-		this.passWord = user.getSenhaUsuario();
+	public UserDetailsImpl(User user) {
+		this.email = user.getUserEmail();
+		this.passwd = user.getUserPasswd();
 	}
 	
-	public UserDetailsImpl(){}
+	public UserDetailsImpl() {}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		return authorities;
 	}
-
+	
 	@Override
 	public String getPassword() {
-		return passWord;
+		return passwd;
 	}
-
+	
 	@Override
 	public String getUsername() {
-		return userName;
+		return email;
 	}
-
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
-
+	
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
-
+	
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
-
+	
 	@Override
 	public boolean isEnabled() {
 		return true;
 	}
-
+	
 }
