@@ -24,7 +24,7 @@ private long id;
 
 	private String email;
 	
-	private String login;
+	private String username;
 		
 	private String picture;
 
@@ -33,11 +33,11 @@ private long id;
 	@JsonIgnoreProperties("user")
 	private List<PostDTO> posts;
 	
-	public UserDTO(long id, String name, String email, String login, String picture, String user_role, List<PostDTO> posts) {
+	public UserDTO(long id, String name, String email, String username, String picture, String user_role, List<PostDTO> posts) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.login = login;
+		this.username = username;
 		this.picture = picture;
 		this.user_role = user_role;
 		this.posts = posts;
@@ -69,12 +69,13 @@ private long id;
 		this.email = email;
 	}
 
-	public String getLogin() {
-		return login;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPicture() {
