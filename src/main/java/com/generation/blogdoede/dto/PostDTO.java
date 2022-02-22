@@ -24,15 +24,15 @@ public class PostDTO {
 	@JsonIgnoreProperties("posts")
 	private SubjectDTO subject;
 	@JsonIgnoreProperties("posts")
-	private UserDTO user;
+	private UserDTO author;
 	
-	public PostDTO(Long id, String title, String content, Date creation_date, SubjectDTO subject, UserDTO user) {
+	public PostDTO(Long id, String title, String content, Date creation_date, SubjectDTO subject, UserDTO author) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.creation_date = creation_date;
 		this.subject = subject;
-		this.user = user;
+		this.author = author;
 	}
 
 	public PostDTO() {}
@@ -76,13 +76,13 @@ public class PostDTO {
 	public void setSubject(SubjectDTO subject) {
 		this.subject = subject;
 	}
-	
-	public UserDTO getUser() {
-		return user;
+
+	public UserDTO getAuthor() {
+		return author;
 	}
-	
-	public void setUser(UserDTO user) {
-		this.user = user;
+
+	public void setAuthor(UserDTO author) {
+		this.author = author;
 	}
 	
 }

@@ -30,7 +30,7 @@ private long id;
 
 	private String user_role;
 	
-	@JsonIgnoreProperties("user")
+	@JsonIgnoreProperties("author")
 	private List<PostDTO> posts;
 	
 	public UserDTO(long id, String name, String email, String username, String picture, String user_role, List<PostDTO> posts) {
