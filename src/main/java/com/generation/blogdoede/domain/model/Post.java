@@ -53,7 +53,7 @@ public class Post {
 	@NotNull
 	@ManyToOne
 	@JsonIgnoreProperties("posts")
-	private User user;
+	private User author;
 
 	public Long getId() {
 		return id;
@@ -95,12 +95,12 @@ public class Post {
 		this.subject = subject;
 	}
 
-	public User getUser() {
-		return user;
+	public User getAuthor() {
+		return author;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 			
 }

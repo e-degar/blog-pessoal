@@ -61,8 +61,8 @@ public class User {
 	@NotNull
 	private String user_role;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("user")
+	@OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("author")
 	private List<Post> posts;
 
 	public long getId() {
