@@ -24,7 +24,7 @@ import com.generation.blogdoede.domain.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 		
-	public Optional<User> findByUserLoginContainingIgnoreCase (String userLogin);
+	public Optional<User> findByUsernameContainingIgnoreCase (String username);
 	
-	public Optional<User> findByUserEmail (String userEmail);
+	public Optional<User> findByEmail (String email);
 }

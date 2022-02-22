@@ -32,18 +32,18 @@ public class Post {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long postId;
+	private Long id;
 	
 	@NotNull
 	@Size(min = 5, max = 150)
-	private String postTitle;
+	private String title;
 	
 	@NotNull
 	@Size(min = 10, max = 1000)
-	private String postContent;
+	private String content;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date postDate;
+	private Date creation_date;
 	
 	@NotNull
 	@ManyToOne
@@ -55,36 +55,36 @@ public class Post {
 	@JsonIgnoreProperties("posts")
 	private User user;
 
-	public Long getPostId() {
-		return postId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPostId(Long postId) {
-		this.postId = postId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getPostTitle() {
-		return postTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setPostTitle(String postTitle) {
-		this.postTitle = postTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getPostContent() {
-		return postContent;
+	public String getContent() {
+		return content;
 	}
 
-	public void setPostContent(String postContent) {
-		this.postContent = postContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public Date getPostDate() {
-		return postDate;
+	public Date getCreation_date() {
+		return creation_date;
 	}
 
-	public void setPostDate(Date postDate) {
-		this.postDate = postDate;
+	public void setCreation_date(Date creation_date) {
+		this.creation_date = creation_date;
 	}
 
 	public Subject getSubject() {

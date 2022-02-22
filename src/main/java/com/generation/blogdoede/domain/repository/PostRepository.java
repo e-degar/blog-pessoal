@@ -20,5 +20,5 @@ import com.generation.blogdoede.domain.model.Post;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-	public List<Post> findAllByPostTitleContainingIgnoreCase (String postTitle);
+	public List<Post> findAllByTitleContainingIgnoreCase (String title);
 }

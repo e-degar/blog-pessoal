@@ -16,33 +16,34 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class SubjectDTO {
 	
-	private Long subjectId;	
-	private String subjectDesc;
+	private Long id;	
+	private String description;
 	@JsonIgnoreProperties("subject")
 	private List<PostDTO> posts;
 	
-	public SubjectDTO(Long subjectId, String subjectDesc, List<PostDTO> posts) {
-		this.subjectId = subjectId;
-		this.subjectDesc = subjectDesc;
+	public SubjectDTO(Long id, String description, List<PostDTO> posts) {
+		this.id = id;
+		this.description = description;
 		this.posts = posts;
 	}
-	
+
 	public SubjectDTO() {}
-
-	public Long getSubjectId() {
-		return subjectId;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setSubjectId(Long subjectId) {
-		this.subjectId = subjectId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getSubjectDesc() {
-		return subjectDesc;
+
+	public String getDescription() {
+		return description;
 	}
 
-	public void setSubjectDesc(String subjectDesc) {
-		this.subjectDesc = subjectDesc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<PostDTO> getPosts() {

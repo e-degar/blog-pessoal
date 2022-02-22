@@ -36,78 +36,89 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long userId;
+	private long id;
 	
 	@NotNull(message = "O campo nome é obrigatório")
 	@Size(min = 2, max = 255)
-	private String userName;
+	private String name;
 	
 	@Schema(example = "email@email.com")
 	@NotNull(message = "O campo email é obrigatório")
 	@Email(message = "Email inválido")
-	private String userEmail;
+	private String email;
 	
 	@NotNull(message = "O campo login é obrigatório")
 	@Size(min = 3, max = 255)
-	private String userLogin;
+	private String username;
 	
 	@NotNull(message = "O campo senha é obrigatório")
 	@Size(min = 8, max = 255)
-	private String userPasswd;
+	private String passwd;
 	
 	@Size(min = 8, max = 255)
-	private String userPicture;
+	private String picture;
+
+	@NotNull
+	private String user_role;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("user")
 	private List<Post> posts;
 
-	public long getUserId() {
-		return userId;
+	public long getId() {
+		return id;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	
-	public String getUserEmail() {
-		return userEmail;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public String getUserLogin() {
-		return userLogin;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public void setUserLogin(String userLogin) {
-		this.userLogin = userLogin;
+	public String getUsername() {
+		return username;
 	}
 
-	public String getUserPasswd() {
-		return userPasswd;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void setUserPasswd(String userPasswd) {
-		this.userPasswd = userPasswd;
+	public String getPasswd() {
+		return passwd;
 	}
 
-	public String getUserPicture() {
-		return userPicture;
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 
-	public void setUserPicture(String userPicture) {
-		this.userPicture = userPicture;
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getUser_role() {
+		return user_role;
+	}
+
+	public void setUser_role(String user_role) {
+		this.user_role = user_role;
 	}
 
 	public List<Post> getPosts() {

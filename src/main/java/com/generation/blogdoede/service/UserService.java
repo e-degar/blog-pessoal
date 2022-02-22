@@ -35,10 +35,10 @@ public class UserService {
 	private @Autowired UserRepository repo;
 	
 	public ResponseEntity<User> registrarUsuario (User newUser) {
-		Optional<User> optional = repo.findByUserEmail(newUser.getUserEmail());
+		Optional<User> optional = repo.findByEmail(newUser.getEmail());
 		
 		if (optional.isEmpty()) {
-			newUser.setUserPasswd(encryptPasswd(newUser.getUserPasswd()));
+			newUser.setPasswd(encryptPasswd(newUser.getPasswd()));
 			return ResponseEntity.status(201).body(repo.save(newUser));
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nome de usuário já existe!");
@@ -51,14 +51,19 @@ public class UserService {
 	}
 	
 	public ResponseEntity<UserCredentialsDTO> getCredentials (@Valid UserLoginDTO dto){
-		return repo.findByUserEmail(dto.getEmail()).map(resp -> {
+		return repo.findByEmail(dto.getEmail()).map(resp -> {
 			BCryptPasswordEncoder encoder =  new BCryptPasswordEncoder();
 			
-			if (encoder.matches(dto.getPasswd(), resp.getUserPasswd())) {
+			if (encoder.matches(dto.getPasswd(), resp.getPasswd())) {
 				credentialsDTO = new UserCredentialsDTO(
 						basicTokenGenerator(dto.getEmail(), dto.getPasswd()),
-						resp.getUserId(),
-						resp.getUserEmail());
+						resp.getName(),
+						resp.getUsername(),
+						resp.getId(),
+						resp.getEmail(),
+						resp.getPicture(),
+						resp.getUser_role());
+
 				return ResponseEntity.status(200).body(credentialsDTO);
 			} else {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Senha inválida");
@@ -93,7 +98,7 @@ public class UserService {
 	}
 
 	public ResponseEntity<User> updateUser(@Valid User user) {
-		return repo.findById(user.getUserId())
+		return repo.findById(user.getId())
 				.map(resp -> ResponseEntity.status(200).body(repo.save(user)))
 				.orElseGet(() -> {
 					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id não encontrado");

@@ -30,29 +30,29 @@ public class Subject {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long subjectId;
+	private Long id;
 	
 	@NotNull
-	private String subjectDesc;
+	private String description;
 	
 	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("subject")
 	private List<Post> posts;
 
-	public Long getSubjectId() {
-		return subjectId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setSubjectId(Long subjectId) {
-		this.subjectId = subjectId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getSubjectDesc() {
-		return subjectDesc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setSubjectDesc(String subjectDesc) {
-		this.subjectDesc = subjectDesc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<Post> getPosts() {

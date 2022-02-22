@@ -18,69 +18,79 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class UserDTO {
 	
-private long userId;
+private long id;
 	
-	private String userName;
+	private String name;
 
-	private String userEmail;
+	private String email;
 	
-	private String userLogin;
+	private String login;
 		
-	private String userPicture;
+	private String picture;
+
+	private String user_role;
 	
 	@JsonIgnoreProperties("user")
 	private List<PostDTO> posts;
-
-	public UserDTO(long userId, String userName, String userEmail, String userLogin, String userPicture,
-			List<PostDTO> posts) {
-		this.userId = userId;
-		this.userName = userName;
-		this.userEmail = userEmail;
-		this.userLogin = userLogin;
-		this.userPicture = userPicture;
+	
+	public UserDTO(long id, String name, String email, String login, String picture, String user_role, List<PostDTO> posts) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.login = login;
+		this.picture = picture;
+		this.user_role = user_role;
 		this.posts = posts;
 	}
-	
+
 	public UserDTO() {}
 
-	public long getUserId() {
-		return userId;
+	public long getId() {
+		return id;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getUserEmail() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getUserLogin() {
-		return userLogin;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setUserLogin(String userLogin) {
-		this.userLogin = userLogin;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public String getUserPicture() {
-		return userPicture;
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setUserPicture(String userPicture) {
-		this.userPicture = userPicture;
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getUser_role() {
+		return user_role;
+	}
+
+	public void setUser_role(String user_role) {
+		this.user_role = user_role;
 	}
 
 	public List<PostDTO> getPosts() {

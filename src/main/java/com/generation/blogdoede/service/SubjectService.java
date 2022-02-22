@@ -33,7 +33,7 @@ public class SubjectService {
 	}
 	
 	public ResponseEntity<List<SubjectDTO>> getSubjectByName(String desc) {
-		List<Subject> subjectsByName = repo.findAllBySubjectDescContainingIgnoreCase(desc);	
+		List<Subject> subjectsByName = repo.findAllByDescriptionContainingIgnoreCase(desc);	
 		return foundSubjects(subjectsByName);
 	}
 

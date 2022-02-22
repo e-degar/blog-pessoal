@@ -17,57 +17,58 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class PostDTO {
 
-	private Long postId;
-	private String postTitle;
-	private String postContent;
-	private Date postDate = new java.sql.Timestamp(System.currentTimeMillis());
+	private Long id;
+	private String title;
+	private String content;
+	private Date creation_date = new java.sql.Timestamp(System.currentTimeMillis());
 	@JsonIgnoreProperties("posts")
 	private SubjectDTO subject;
 	@JsonIgnoreProperties("posts")
 	private UserDTO user;
 	
-	public PostDTO(Long postId, String postTitle, String postContent, SubjectDTO subject, UserDTO user) {
-		this.postId = postId;
-		this.postTitle = postTitle;
-		this.postContent = postContent;
+	public PostDTO(Long id, String title, String content, Date creation_date, SubjectDTO subject, UserDTO user) {
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.creation_date = creation_date;
 		this.subject = subject;
 		this.user = user;
 	}
-	
-	public PostDTO() {}
 
-	public Long getPostId() {
-		return postId;
-	}
+	public PostDTO() {}
 	
-	public void setPostId(Long postId) {
-		this.postId = postId;
+	public Long getId() {
+		return id;
 	}
-	
-	public String getPostTitle() {
-		return postTitle;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
-	public void setPostTitle(String postTitle) {
-		this.postTitle = postTitle;
+
+	public String getTitle() {
+		return title;
 	}
-	
-	public String getPostContent() {
-		return postContent;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	
-	public void setPostContent(String postContent) {
-		this.postContent = postContent;
+
+	public String getContent() {
+		return content;
 	}
-	
-	public Date getPostDate() {
-		return postDate;
+
+	public void setContent(String content) {
+		this.content = content;
 	}
-	
-	public void setPostDate(Date postDate) {
-		this.postDate = postDate;
+
+	public Date getCreation_date() {
+		return creation_date;
 	}
-	
+
+	public void setCreation_date(Date creation_date) {
+		this.creation_date = creation_date;
+	}
+
 	public SubjectDTO getSubject() {
 		return subject;
 	}

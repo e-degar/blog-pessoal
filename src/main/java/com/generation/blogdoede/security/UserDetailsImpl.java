@@ -29,8 +29,8 @@ public class UserDetailsImpl implements UserDetails{
 	private List<GrantedAuthority> authorities;
 	
 	public UserDetailsImpl(User user) {
-		this.email = user.getUserEmail();
-		this.passwd = user.getUserPasswd();
+		this.email = user.getEmail();
+		this.passwd = user.getPasswd();
 	}
 	
 	public UserDetailsImpl() {}

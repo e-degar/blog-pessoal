@@ -16,13 +16,22 @@ package com.generation.blogdoede.dto;
 public class UserCredentialsDTO {
 	
 	private String basicToken;
+	private String name;
+	private String username;
 	private Long id;
 	private String email;
+	private String picture;
+	private String user_role;
 	
-	public UserCredentialsDTO(String basicToken, Long id, String email) {
+	public UserCredentialsDTO(String basicToken, String name, String username, Long id, String email, String picture,
+			String user_role) {
 		this.basicToken = basicToken;
+		this.name = name;
+		this.username = username;
 		this.id = id;
 		this.email = email;
+		this.picture = picture;
+		this.user_role = user_role;
 	}
 
 	public String getBasicToken() {
@@ -31,6 +40,22 @@ public class UserCredentialsDTO {
 
 	public void setBasicToken(String basicToken) {
 		this.basicToken = basicToken;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public Long getId() {
@@ -48,5 +73,21 @@ public class UserCredentialsDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-		
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getUser_role() {
+		return user_role;
+	}
+
+	public void setUser_role(String user_role) {
+		this.user_role = user_role;
+	}
+			
 }

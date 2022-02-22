@@ -33,7 +33,7 @@ public class PostService {
 	}
 
 	public ResponseEntity<List<PostDTO>> getPostByTitulo(String titulo) {
-		List<Post> postsByTitle = repo.findAllByPostTitleContainingIgnoreCase(titulo);		
+		List<Post> postsByTitle = repo.findAllByTitleContainingIgnoreCase(titulo);		
 		return foundPosts(postsByTitle);
 	}
 	

@@ -21,5 +21,5 @@ import com.generation.blogdoede.domain.model.Subject;
 
 @Repository
 public interface SubjectRepository extends JpaRepository<Subject, Long>{
-	public List<Subject> findAllBySubjectDescContainingIgnoreCase (String subjectDesc);
+	public List<Subject> findAllByDescriptionContainingIgnoreCase (String description);
 }
