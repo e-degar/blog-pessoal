@@ -35,7 +35,7 @@ public class Subject {
 	@NotNull
 	private String description;
 	
-	@OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "subject", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("subject")
 	private List<Post> posts;
 

@@ -61,7 +61,7 @@ public class User {
 	@NotNull
 	private String user_role;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("user")
 	private List<Post> posts;
 
