@@ -46,6 +46,9 @@ public class User {
 	@NotNull(message = "O campo email é obrigatório")
 	@Email(message = "Email inválido")
 	private String email;
+
+	@Size(min = 3, max = 180)
+	private String biography;
 	
 	@NotNull(message = "O campo login é obrigatório")
 	@Size(min = 3, max = 255)
@@ -87,6 +90,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getBiography() {
+		return biography;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
 	}
 
 	public String getUsername() {

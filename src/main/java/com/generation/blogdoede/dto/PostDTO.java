@@ -20,16 +20,19 @@ public class PostDTO {
 	private Long id;
 	private String title;
 	private String content;
+	private String picture;
 	private Date creation_date = new java.sql.Timestamp(System.currentTimeMillis());
 	@JsonIgnoreProperties("posts")
 	private SubjectDTO subject;
 	@JsonIgnoreProperties("posts")
 	private UserDTO author;
 	
-	public PostDTO(Long id, String title, String content, Date creation_date, SubjectDTO subject, UserDTO author) {
+	public PostDTO(Long id, String title, String content, String picture, Date creation_date, SubjectDTO subject,
+			UserDTO author) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
+		this.picture = picture;
 		this.creation_date = creation_date;
 		this.subject = subject;
 		this.author = author;
@@ -59,6 +62,14 @@ public class PostDTO {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	public Date getCreation_date() {

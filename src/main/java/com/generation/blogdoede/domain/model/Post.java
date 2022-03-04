@@ -41,6 +41,8 @@ public class Post {
 	@NotNull
 	@Size(min = 10, max = 1000)
 	private String content;
+
+	private String picture;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creation_date;
@@ -77,6 +79,14 @@ public class Post {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	public Date getCreation_date() {

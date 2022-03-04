@@ -23,6 +23,8 @@ private long id;
 	private String name;
 
 	private String email;
+
+	private String biography;
 	
 	private String username;
 		
@@ -33,10 +35,12 @@ private long id;
 	@JsonIgnoreProperties("author")
 	private List<PostDTO> posts;
 	
-	public UserDTO(long id, String name, String email, String username, String picture, String user_role, List<PostDTO> posts) {
+	public UserDTO(long id, String name, String email, String biography, String username, String picture,
+			String user_role, List<PostDTO> posts) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.biography = biography;
 		this.username = username;
 		this.picture = picture;
 		this.user_role = user_role;
@@ -69,6 +73,13 @@ private long id;
 		this.email = email;
 	}
 
+	public String getBiography() {
+		return biography;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
 
 	public String getUsername() {
 		return username;

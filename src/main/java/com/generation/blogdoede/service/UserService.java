@@ -98,11 +98,14 @@ public class UserService {
 	}
 
 	public ResponseEntity<User> updateUser(@Valid User user) {
-		return repo.findById(user.getId())
-				.map(resp -> ResponseEntity.status(200).body(repo.save(user)))
-				.orElseGet(() -> {
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id não encontrado");
-				});
+		Optional<User> opt = repo.findById(user.getId());
+
+		if (opt.isPresent()) {
+			user.setPasswd(encryptPasswd(user.getPasswd()));
+			return ResponseEntity.status(200).body(repo.save(user));
+		} else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id não encontrado");
+		}
 	}
 
 	@SuppressWarnings("rawtypes")
