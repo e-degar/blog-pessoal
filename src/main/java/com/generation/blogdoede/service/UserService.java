@@ -72,6 +72,21 @@ public class UserService {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário não existe!");
 		});
 	}
+
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity verifyPasswd (@Valid UserLoginDTO dto){
+		return repo.findByEmail(dto.getEmail()).map(resp -> {
+			BCryptPasswordEncoder encoder =  new BCryptPasswordEncoder();
+			
+			if (encoder.matches(dto.getPasswd(), resp.getPasswd())) {
+				return ResponseEntity.status(200).build();
+			} else {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Senha inválida");
+			}
+		}).orElseThrow(() -> {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário não existe!");
+		});
+	}
 	
 	private static String basicTokenGenerator(String username, String passwd) {
 		String structure = username + ":" + passwd;

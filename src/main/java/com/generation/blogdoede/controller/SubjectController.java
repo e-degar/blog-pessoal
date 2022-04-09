@@ -27,7 +27,7 @@ import com.generation.blogdoede.service.SubjectService;
  */
 
 @RestController
-@RequestMapping("/subject")
+@RequestMapping("/api/subject")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SubjectController {
 

@@ -27,7 +27,7 @@ import com.generation.blogdoede.service.PostService;
  */
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 @CrossOrigin("*")
 public class PostController {
 	
