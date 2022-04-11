@@ -32,7 +32,8 @@ public class Subject {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
+	@NotNull(message = "O nome do assunto não pode ser vazio")
+	@Size(min = 3, max = 50, message = "Quantidade de caracteres não permitida")
 	private String description;
 	
 	@OneToMany(mappedBy = "subject", cascade = CascadeType.REMOVE)

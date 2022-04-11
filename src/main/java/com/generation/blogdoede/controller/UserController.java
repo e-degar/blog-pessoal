@@ -46,13 +46,7 @@ public class UserController {
 	public ResponseEntity<UserCredentialsDTO> getCredentials (@Valid @RequestBody UserLoginDTO dto){
 		return service.getCredentials(dto);
 	}
-
-	@SuppressWarnings("rawtypes")
-	@PostMapping("/verify")
-		public ResponseEntity verifyPasswd (@Valid @RequestBody UserLoginDTO dto){
-		return service.verifyPasswd(dto);
-	}
-	
+		
 	@GetMapping("/all")
 	public ResponseEntity<List<User>> getAll(){
 		return service.getAllUsers();

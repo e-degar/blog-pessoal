@@ -17,8 +17,11 @@ import javax.validation.constraints.NotBlank;
 
 public class UserLoginDTO {
 	
-	private @NotBlank String email;
-	private @NotBlank String passwd;
+	@NotBlank(message = "Por favor, insira um email para fazer login")
+	private String email;
+	
+	@NotBlank(message = "Por favor, informe uma senha para fazer login")
+	private String passwd;
 
 	public String getEmail() {
 		return email;

@@ -41,7 +41,7 @@ public class UserService {
 			newUser.setPasswd(encryptPasswd(newUser.getPasswd()));
 			return ResponseEntity.status(201).body(repo.save(newUser));
 		} else {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nome de usuário já existe!");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já cadastrado com esse email");
 		}
 	}
 	
@@ -65,21 +65,6 @@ public class UserService {
 						resp.getUser_role());
 
 				return ResponseEntity.status(200).body(credentialsDTO);
-			} else {
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Senha inválida");
-			}
-		}).orElseThrow(() -> {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário não existe!");
-		});
-	}
-
-	@SuppressWarnings("rawtypes")
-	public ResponseEntity verifyPasswd (@Valid UserLoginDTO dto){
-		return repo.findByEmail(dto.getEmail()).map(resp -> {
-			BCryptPasswordEncoder encoder =  new BCryptPasswordEncoder();
-			
-			if (encoder.matches(dto.getPasswd(), resp.getPasswd())) {
-				return ResponseEntity.status(200).build();
 			} else {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Senha inválida");
 			}

@@ -34,12 +34,11 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
-	@Size(min = 5, max = 150)
+	@NotNull(message = "O título é obrigatório")
+	@Size(min = 5, max = 200, message = "O título deve ter entre 5 e 200 caracteres")
 	private String title;
 	
-	@NotNull
-	@Size(min = 10, max = 1000)
+	@Size(min = 10, max = 10000 message = "Quantidade de caracteres não permitida")
 	private String content;
 
 	private String picture;
@@ -47,7 +46,7 @@ public class Post {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creation_date;
 	
-	@NotNull
+	@NotNull(message = "É obrigatório relacionar sua postagem a um assunto")
 	@ManyToOne
 	@JsonIgnoreProperties("posts")
 	private Subject subject;

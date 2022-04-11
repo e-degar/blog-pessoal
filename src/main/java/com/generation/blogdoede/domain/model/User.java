@@ -39,7 +39,7 @@ public class User {
 	private long id;
 	
 	@NotNull(message = "O campo nome é obrigatório")
-	@Size(min = 2, max = 255)
+	@Size(min = 2, max = 255, message = "Quantidade de caracteres não permitida")
 	private String name;
 	
 	@Schema(example = "email@email.com")
@@ -47,18 +47,17 @@ public class User {
 	@Email(message = "Email inválido")
 	private String email;
 
-	@Size(min = 3, max = 180)
+	@Size(min = 3, max = 180, message = "Tamanho máximo 180 caracteres")
 	private String biography;
 	
 	@NotNull(message = "O campo login é obrigatório")
-	@Size(min = 3, max = 255)
+	@Size(min = 3, max = 20, message = "Quantidade de caracteres não permitida")
 	private String username;
 	
 	@NotNull(message = "O campo senha é obrigatório")
-	@Size(min = 8, max = 255)
+	@Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres")
 	private String passwd;
 	
-	@Size(min = 8, max = 255)
 	private String picture;
 
 	@NotNull
