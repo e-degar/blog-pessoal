@@ -38,7 +38,7 @@ public class Post {
 	@Size(min = 5, max = 200, message = "O título deve ter entre 5 e 200 caracteres")
 	private String title;
 	
-	@Size(min = 10, max = 10000 message = "Quantidade de caracteres não permitida")
+	@Size(min = 10, max = 10000, message = "Quantidade de caracteres não permitida")
 	private String content;
 
 	private String picture;
