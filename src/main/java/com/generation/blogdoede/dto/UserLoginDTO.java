@@ -1,5 +1,6 @@
 package com.generation.blogdoede.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotBlank;
 
 public class UserLoginDTO {
 	
+	@Email(message = "Insira um email válido")
 	@NotBlank(message = "Por favor, insira um email para fazer login")
 	private String email;
 	
