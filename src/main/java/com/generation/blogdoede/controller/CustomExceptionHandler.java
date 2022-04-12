@@ -20,12 +20,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
-  @ExceptionHandler(Exception.class)
+/*   @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
     Map<String, String> errors = new HashMap<>();
       errors.put("message", ex.getLocalizedMessage());
     return new ResponseEntity(errors, HttpStatus.INTERNAL_SERVER_ERROR);
-  }
+  } */
   
   @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
